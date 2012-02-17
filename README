@@ -1,0 +1,20 @@
+This is a sample application for building a widget on rails using jsonp
+
+The models and controllers are dead simple, so for the time being the important elements to consider are the following:
+
+a) posts#show renders html that is converted and cleaned to json, appended to a callback
+
+b) the public/widget/widget.js file is where the script is loaded onto a clients site. Within this script, an ajax call is made to the
+posts#show controller asking for html.to_json (appended to a callback). this html is then sent to the clients site and embeddable in a widget <div> also created in this js file.
+
+c) set_access_control_headers in the application controller allows an xhr request from a different domain
+
+Some initial considerations:
+
+a) making sure to get jquery on the client's site and avoid any conflicts if they do have it
+
+b) security implications of the set_access_control_headers
+
+c) making this play nice with oauth
+
+d) using js_message to post from the client's site
