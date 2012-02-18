@@ -58,7 +58,7 @@ function main() {
 		}
 
 		$.ajax({
-		  url: 'http://localhost:3000/posts/1?callback=?',
+		  url: 'http://localhost:3000/posts/2?callback=?',
 		  dataType: 'jsonp',
 		  success: receivedForm
 		});

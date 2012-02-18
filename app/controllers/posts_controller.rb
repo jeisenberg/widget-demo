@@ -12,7 +12,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     # Store HTML in a variable rather than returning in to the browser
-    html = render_to_string
+    html = render_to_string(:partial => 'posts/widget')
     # Build a JSON object containing our HTML
     cleaned_body = to_json_value(html)
     #clean out the html garbage
