@@ -42,13 +42,13 @@ function scriptLoadHandler() {
 function main() { 
     jQuery(document).ready(function($) { 
 	
-	//make the div
+
 		//document.write("<div id='example-widget-container'></div>")
-        /******* Load CSS *******
+        /******* Load CSS *******/
         var css_link = $("<link>", { 
             rel: "stylesheet", 
             type: "text/css", 
-            href: "style.css" 
+            href: "http://localhost:3000/assets/widget.css" 
         });
         css_link.appendTo('head');          
 

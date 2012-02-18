@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
-  
+  #performance reasons - turn off layout rendering and sessions
+  layout nil
+  #session :off
   before_filter :set_access_control_headers
   #this allows us to do ajax calls from another domain - need to check out security implications
   # see http://blog.jetthoughts.com/2010/12/22/allow-multiple-access-control-requests-for-rails/
