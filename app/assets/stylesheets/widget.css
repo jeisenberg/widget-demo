@@ -1,0 +1,8 @@
+#our-awesome-widget-target {
+	position:fixed;
+	top:45%;
+	right:-10px;
+	background-color:#cccccc;
+	height:auto;
+	width:80px;
+}
