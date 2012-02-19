@@ -16,7 +16,7 @@ class PostsController < ApplicationController
     # Store HTML in a variable rather than returning in to the browser
     html = render_to_string(:partial => 'posts/widget')
     # Build a JSON object containing our HTML
-    cleaned_body = to_json_value(html)
+    html = to_json_value(html)
     #clean out the html garbage
     json = {"html" => html}.to_json
     # Get the name of the JSONP callback created by jQuery
@@ -25,8 +25,16 @@ class PostsController < ApplicationController
     jsonp = callback + "(" + json + ")"
     # Send result to the browser
     render :text => jsonp,  :content_type => "text/javascript"
+    puts html
     puts jsonp
 
+  end
+  
+  def widget
+    @post = Post.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
   end
   
   def new
@@ -49,7 +57,7 @@ class PostsController < ApplicationController
   end
   
   def to_json_value(str)
-      str.gsub!("\"", "\\\"")
+      str.gsub!("\"", "")
       str.gsub!(/\n+/, " ")
       str
   end

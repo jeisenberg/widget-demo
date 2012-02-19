@@ -2,8 +2,10 @@ Widget1::Application.routes.draw do
   resources :users do
     :posts
   end
-  
+  match 'widget/:id' => 'posts#widget'
   resources :posts
+  
+  #match 'posts/widget' => 'posts#widget'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
