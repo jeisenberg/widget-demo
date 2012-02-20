@@ -1,0 +1,16 @@
+<%= form_for @post, :html => {:remote => true} do |f|%>
+	<div class="clearfix">
+		<%=f.label :title %>
+		<%=f.text_field :title%>
+	</div>
+	
+	<div class="clearfix">
+		<%=f.label :content %>
+		<%=f.text_field :content%>
+	</div>
+	<div class="clearfix">
+		<%= f.label "User"%>
+		<%= f.text_field :user_token %>
+	</div>
+	<%= f.submit%>
+<% end %>

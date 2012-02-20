@@ -43,15 +43,20 @@ function main() {
     jQuery(document).ready(function($) { 
 	
 
-		//document.write("<div id='example-widget-container'></div>")
+		/*******Load Jquery Tokenizer *******
+
+		var script_tag = document.createElement('script');
+	    script_tag.setAttribute("type","text/javascript");
+	    script_tag.setAttribute("src",
+	        "http://localhost:3000/widget/jquery.tokeninput.js");
+		(document.getElementsByTagName("head")[0] || document.documentElement).appendChild(script_tag);
         /******* Load CSS *******/
         var css_link = $("<link>", { 
             rel: "stylesheet", 
             type: "text/css", 
             href: "http://localhost:3000/assets/widget.css" 
         });
-        css_link.appendTo('head');          
-
+        css_link.appendTo('head');  
         /******* Load HTML *******/
         var receivedForm = function(data) {
 		  $("#our-awesome-widget-target").html(data.html);
@@ -62,21 +67,23 @@ function main() {
 		  dataType: 'jsonp',
 		  success: receivedForm
 		});
+		
     });
 }
+
+
 
 
 })();
 
 function submitForm(){
-	event.preventDefault();
 	var $form = $('.widget-form');
 	
 	$.ajax({
 		url: $form.attr('action'),
 		type: $form.attr('method'),
 		data: $form.serialize(),
-		dataType:'json',
+		dataType:'js',
 
 		success: function(data) {
 			console.log(data);
@@ -91,4 +98,3 @@ function submitForm(){
 		}
 	});
 };
-

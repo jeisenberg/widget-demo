@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   #performance reasons - turn off layout rendering and sessions
-  layout nil
+  #layout nil
   #session :off
   before_filter :set_access_control_headers
   #this allows us to do ajax calls from another domain - need to check out security implications
@@ -9,6 +9,12 @@ class PostsController < ApplicationController
   
   def index
     @posts = Post.all
+    q = params[:q].blank? ? "" : params[:q]
+    @posts = Post.where("title like ?", "%#{q}%")
+
+    respond_to do |format|
+      format.json { render json: @posts.map(&:title) }
+    end
   end
   
   def show
@@ -44,7 +50,10 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params[:post])
     if @post.save
-      render :json => @post
+      respond_to do |format|
+        format.js
+        format.html
+      end
     else
       render :text => @post.errors
     end

@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
+  before_filter :set_access_control_headers
   def index
-    @users = User.all
+    q = params[:q]
+    @user = User.where("name like ?", "%#{q}%")
+    respond_to do |format|
+      format.html
+      format.json { render json: @user}
+    end
   end
 
   def show
