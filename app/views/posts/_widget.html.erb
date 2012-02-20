@@ -1,7 +1,14 @@
-<h2>Share with friends!</h2>
-<h3><%= @post.title%></h3>
 
-<span class="thumb"></span>
-<span class="thumb"></span>
-<span class="thumb"></span>
-<span class="thumb"></span>
+<form method="post" action="http://localhost:3000/posts.json" class="widget-form">
+	<p><label for="contact-form-name">Title</label><input type="text" id="contact-form-name" name="post[title]" required></p>
+	<p class="multi-line"><textarea name="post[content]" required></textarea></p>
+	<button onclick="submitForm();">Get Data</button>
+</form>
+<!--
+<%= form_for(Post.new, :remote => true) do |f|%>
+	<%= f.label :title %>
+	<%= f.text_field :title, :title => 'Name' %>
+	<%= f.text_area :content%>
+	<%= f.submit "Save" %>
+<% end%>
+-->

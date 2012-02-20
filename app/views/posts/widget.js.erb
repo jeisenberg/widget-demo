@@ -65,4 +65,30 @@ function main() {
     });
 }
 
+
 })();
+
+function submitForm(){
+	event.preventDefault();
+	var $form = $('.widget-form');
+	
+	$.ajax({
+		url: $form.attr('action'),
+		type: $form.attr('method'),
+		data: $form.serialize(),
+		dataType:'json',
+
+		success: function(data) {
+			console.log(data);
+			alert('success');
+		},
+
+		error: function() {
+
+		},
+
+		complete: function() {
+		}
+	});
+};
+

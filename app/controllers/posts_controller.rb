@@ -42,9 +42,9 @@ class PostsController < ApplicationController
   end
   
   def create
-    @post = Post.new
+    @post = Post.new(params[:post])
     if @post.save
-      render :text => @post
+      render :json => @post
     else
       render :text => @post.errors
     end
